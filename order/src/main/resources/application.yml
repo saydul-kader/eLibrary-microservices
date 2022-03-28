@@ -1,0 +1,21 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: order-service
+  cloud:
+    config:
+      enabled: false
+    consul:
+      discovery:
+        instance-id: Order:${spring.application.instance-id:${random.value}}
+        service-name: eLibrary-order
+  datasource:
+    url: jdbc:mysql://localhost:3306/order
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

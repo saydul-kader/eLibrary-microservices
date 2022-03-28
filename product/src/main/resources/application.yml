@@ -1,0 +1,26 @@
+server:
+  port: 8099
+spring:
+  application:
+    name: product-service
+  #config:
+    #import: optional:configserver:http://localhost:8090
+  profiles:
+    active: dev
+  cloud:
+    config:
+      profile: dev
+    consul:
+      discovery:
+        instance-id: Product:${spring.application.instance-id:${random.value}}
+        service-name: eLibrary-product
+  datasource:
+    url: jdbc:mysql://localhost:3306/product
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+

@@ -1,0 +1,15 @@
+server:
+  port: 8070
+spring:
+  application:
+    name: eLibrary-Gateway
+  cloud:
+    consul:
+      discovery:
+        instance-id: Gateway:${spring.application.instance-id:${random.value}}
+        service-name: eLibrary-gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
